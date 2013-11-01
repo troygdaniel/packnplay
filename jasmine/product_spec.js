@@ -19,20 +19,20 @@ describe("PackNPlay Product.js specs", function() {
     };
   });
 
-  describe("Product#totalCost", function() {
+  describe("Product#finalCost", function() {
     it("should calculate correctly for 'food' materials", function() {
       var p = new Product(productOptions[0]);
-      expect(p.totalCost()).toEqual(1591.58);
+      expect(p.finalCost()).toEqual(1591.58);
     });
 
     it("should calculate correctly for 'drugs' materials", function() {
       p = new Product(productOptions[1]);
-      expect(p.totalCost()).toEqual(6199.81);
+      expect(p.finalCost()).toEqual(6199.81);
     });
 
     it("should calculate correctly for 'books' materials", function() {
       p = new Product(productOptions[2]);
-      expect(p.totalCost()).toEqual(13707.63);
+      expect(p.finalCost()).toEqual(13707.63);
     });
   });
 

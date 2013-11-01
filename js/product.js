@@ -33,10 +33,10 @@ function Product(options) {
     // PUBLIC METHODS
     // --
     
-    // Calculate the total cost to package the goods
-    Product.prototype.totalCost = function() {
-        var totalCost = this.flatWithBase() + this.costForPeople() + this.costForMaterials();
-        return parseFloat(totalCost.toFixed(2));
+    // Calculate the final cost to package the goods
+    Product.prototype.finalCost = function() {
+        var finalCost = this.flatWithBase() + this.costForPeople() + this.costForMaterials();
+        return parseFloat(finalCost.toFixed(2));
     };
 
     // Calculate the minimum basePrice+flatRate
