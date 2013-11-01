@@ -5,6 +5,19 @@
 	<title>PacknPlay</title>
 </head>
 <body>
-<script src="js/product.js"></script>
+<div id="main-content"></div>
 </body>
+<script src="js/product.js"></script>
+<script>
+  var p = new Product({basePrice:1299.99,numOfPeople:3,material:"food"});
+  console.log(p.totalCost());
+
+  p2 = new Product({basePrice:5432,numOfPeople:1,material:"drugs"});
+  console.log(p2.totalCost());
+
+  p3 = new Product({basePrice:12456.95,numOfPeople:4,material:"books"});
+  console.log(p3.totalCost());
+
+  document.getElementById("main-content").innerHTML = p.totalCost() + ", " + p2.totalCost() + ", " + p3.totalCost();
+</script>
 </html>
