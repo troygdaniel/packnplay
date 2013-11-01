@@ -18,19 +18,19 @@ function Product(options) {
   Product.prototype.flatWithBase = function() {
     var flatWithBase = this.basePrice * (1 + markup.flat);
     return parseFloat(flatWithBase.toFixed(2));
-  }
+  };
 
   // Calculate the line item cost for 'people'
   Product.prototype.costForPeople = function() {
     var costForPeople = this.flatWithBase() * peopleFactor(this);
     return parseFloat(costForPeople.toFixed(2));
-  }
+  };
 
   // Calculate the line item cost for 'materials'
   Product.prototype.costForMaterials = function() {
-    costForMaterials = this.flatWithBase() * markupForMaterial(this.material);
+    var costForMaterials = this.flatWithBase() * markupForMaterial(this.material);
     return parseFloat(costForMaterials.toFixed(2));
-  }
+  };
 
   // PRIVATE METHODS
   // --
@@ -42,11 +42,11 @@ function Product(options) {
 
   // Return the markup for food, drugs, electronics or zero
   function markupForMaterial(m) {
-    var materialFactor = markup.material[m]
+    var materialFactor = markup.material[m];
     if (typeof materialFactor === "undefined")
       return 0;
     else
-      return markup.material[m]
+      return markup.material[m];
   }
 
   // Configurable markup costs in percentages
