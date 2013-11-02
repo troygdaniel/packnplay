@@ -131,22 +131,22 @@ describe("PackNPlay Product.js specs", function() {
   });
 
   describe("Product#initialBasePrice", function() {
-    it("should return the initial base price", function() {
+    it("should be pending...", function() {
     });
   });
 
   describe("Product#numOfPeople", function() {
-    it("should ", function() {
+    it("should be pending... ", function() {
     });
   });
 
   describe("Product#setMaterial", function() {
-    it("should ", function() {
+    it("should be pending... ", function() {
     });
   });
 
   describe("Product#material", function() {
-    it("should ", function() {
+    it("should be pending... ", function() {
     });
   });
 
