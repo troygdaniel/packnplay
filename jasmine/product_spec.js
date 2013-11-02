@@ -1,21 +1,34 @@
+// TODO: test invalid data and scenarios
 describe("PackNPlay Product.js specs", function() {
-  var productOptions = [];
+  var productOptions = [], invalidProductOptions;
 
   beforeEach(function() {
     productOptions[0] = {
-      basePrice: 1299.99,
+      initialBasePrice: 1299.99,
       numOfPeople: 3,
       material: "food"
     };
     productOptions[1] = {
-      basePrice: 5432,
+      initialBasePrice: 5432,
       numOfPeople: 1,
       material: "drugs"
     };
     productOptions[2] = {
-      basePrice: 12456.95,
+      initialBasePrice: 12456.95,
       numOfPeople: 4,
       material: "books"
+    };
+
+    // TODO: consider only setting these values when required
+    badProductOptions = {
+      basePrice: "dsdsad",
+      numberOfPeopleThatAreWorking: 0,
+      mateial: 123
+    };
+    invalidProductOptions = {
+      initialBasePrice: "dsdsad",
+      numOfPeople: "dd",
+      material: 123
     };
   });
 
@@ -36,20 +49,20 @@ describe("PackNPlay Product.js specs", function() {
     });
   });
 
-  describe("Product#flatWithBase", function() {
+  describe("Product#basePrice", function() {
     it("should calculate (basePrice + flatRate) for 'food' materials", function() {
       var p = new Product(productOptions[0]);
-      expect(p.flatWithBase()).toEqual(1364.99);
+      expect(p.basePrice()).toEqual(1364.99);
     });
 
     it("should calculate (basePrice + flatRate) for 'drugs' materials", function() {
       p = new Product(productOptions[1]);
-      expect(p.flatWithBase()).toEqual(5703.6);
+      expect(p.basePrice()).toEqual(5703.6);
     });
 
     it("should calculate (basePrice + flatRate) for 'books' materials", function() {
       p = new Product(productOptions[2]);
-      expect(p.flatWithBase()).toEqual(13079.8);
+      expect(p.basePrice()).toEqual(13079.8);
     });
   });
 
@@ -82,4 +95,59 @@ describe("PackNPlay Product.js specs", function() {
       expect(p.costForMaterials()).toEqual(0);
     });
   });
+
+  describe("Product#setInitialBasePrice", function() {
+    
+    it("should not accept incorrect options", function() {
+      badProductOptions.numOfPeople=1;
+      var err = new Error('initialBasePrice is a required value for Products.');
+      expect(function () {new Product(badProductOptions);}).toThrow(err);
+    });
+    it("should reject non-numeric values", function() {
+      invalidProductOptions.numOfPeople=1;
+      var err = new Error('initialBasePrice must be a numeric value.');
+      expect(function () {new Product(invalidProductOptions);}).toThrow(err);
+    });
+  });
+
+  describe("Product#setNumOfPeople", function() {
+    it("should not accept incorrect options", function() {
+      badProductOptions.initialBasePrice=1;
+      badProductOptions.material = "k";
+      var err = new Error('numOfPeople is a required value for Products.');
+      expect(function () {new Product(badProductOptions);}).toThrow(err);
+    });
+    it("should reject non-numeric values", function() {
+      invalidProductOptions.initialBasePrice=1;
+      var err = new Error('numOfPeople must be a numeric value.');
+      expect(function () {new Product(invalidProductOptions);}).toThrow(err);
+    });    
+    it("should reject any value less than 1", function() {
+      invalidProductOptions.initialBasePrice=1;
+      invalidProductOptions.numOfPeople=0;
+      var err = new Error('numOfPeople must be at least 1.');
+      expect(function () {new Product(invalidProductOptions);}).toThrow(err);
+    });    
+  });
+
+  describe("Product#initialBasePrice", function() {
+    it("should return the initial base price", function() {
+    });
+  });
+
+  describe("Product#numOfPeople", function() {
+    it("should ", function() {
+    });
+  });
+
+  describe("Product#setMaterial", function() {
+    it("should ", function() {
+    });
+  });
+
+  describe("Product#material", function() {
+    it("should ", function() {
+    });
+  });
+
 });
