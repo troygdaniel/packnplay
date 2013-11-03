@@ -1,5 +1,14 @@
-// Astracting Product, subclassing NuProduct
+/*jslint nomen: true*/
+if (typeof Product === "undefined") {
+    throw new Error("product.js is a prerequisite library.");
+}
+var Product = Product || {};
+var NuProduct = NuProduct || {};
+NuProduct.prototype = new Product();
+NuProduct.constructor = NuProduct;
+
 function NuProduct(options) {
+    "use strict";
 
     // Configurable markup costs in percentages
     var markup = {
@@ -11,10 +20,22 @@ function NuProduct(options) {
             electronics: 0.02
         }
     };
+    Product.call();
 
-    NuProduct.prototype = new Product(options);
-    NuProduct.constructor = NuProduct;
+    // Calc the markup based on the # of ppl working
+    function peopleFactor(that) {
+        return markup.peopleFactor * that.numOfPeople();
+    }
 
+    // Return the markup for food, drugs, electronics or zero
+    function markupForMaterial(m) {
+        var materialFactor = markup.material[m];
+        if (typeof materialFactor === "undefined") {
+            return 0;
+        }
+        return markup.material[m];
+    }
+    
     // Calculate the final cost to package the goods
     NuProduct.prototype.finalCost = function () {
         var finalCost = this.basePrice() + this.costForPeople() + this.costForMaterials();
@@ -23,8 +44,8 @@ function NuProduct(options) {
 
     // Calculate the minimum basePrice+flatRate
     NuProduct.prototype.basePrice = function () {
-        _basePrice = this.initialBasePrice() * (1 + markup.flat);        
-        return parseFloat(_basePrice.toFixed(2));
+        this._basePrice = this.initialBasePrice() * (1 + markup.flat);
+        return parseFloat(this._basePrice.toFixed(2));
     };
 
     // Calculate the line item cost for 'people'
@@ -38,4 +59,8 @@ function NuProduct(options) {
         var costForMaterials = this.basePrice() * markupForMaterial(this.material());
         return parseFloat(costForMaterials.toFixed(2));
     };
+
+    // Initialize using options
+    this.initialize(options);
+
 }

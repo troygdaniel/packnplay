@@ -10,21 +10,12 @@
 <script src="js/product.js"></script>
 <script src="js/nuproduct.js"></script>
 <script>
-  var p = new Product({initialBasePrice:1299.99,numOfPeople:3,material:"food"});
-  console.log(p.finalCost());
-
-  var p2 = new Product({initialBasePrice:5432,numOfPeople:1,material:"drugs"});
-  console.log(p2.finalCost());
-
-  var p3 = new Product({initialBasePrice:12456.95,numOfPeople:4,material:"books"});
-  console.log(p3.finalCost());
-
-  // p4 = new Product({basePrice:12456.95,numOfPeople:"s33d",material:1});
-  // console.log(p4.finalCost());
-
+  var p = new NuProduct({initialBasePrice:1299.99,numOfPeople:3,material:"food"});
+  var p2 = new NuProduct({initialBasePrice:5432,numOfPeople:1,material:"drugs"});
+  var p3 = new NuProduct({initialBasePrice:12456.95,numOfPeople:4,material:"books"});
+  
   var productCostsOutput = "<pre>Running examples:\n";
-  // console.log(p.finalCost());
-
+  
   productCostsOutput += "$1299.99  base, 3 people for 'food'  = $" + p.finalCost() + "<BR/>";
   productCostsOutput += "$5432.00  base, 1 person for 'drugs' = $" + p2.finalCost() + "<BR/>";
   productCostsOutput += "$12456.95 base, 4 people for 'books' = $" + p3.finalCost();
