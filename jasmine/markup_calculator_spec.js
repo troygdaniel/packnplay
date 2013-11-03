@@ -1,7 +1,7 @@
 // MarkupCalculator.js jasmine specs
 describe("MarkupCalculator.js specs", function () {
     "use strict";
-    var productOptions = [], packingJobs = [];
+    var packingJobs = [];
 
     beforeEach(function () {
         packingJobs[0] = new PackingJob({
