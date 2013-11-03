@@ -1,20 +1,20 @@
 /*jslint nomen: true*/
 
-function Product(options) {
+function PackingJob(options) {
     "use strict";
 
-    Product.prototype.setInitialBasePrice = function (v) {
+    PackingJob.prototype.setInitialBasePrice = function (v) {
         if (typeof v === "undefined") {
-            throw new Error('initialBasePrice is a required value for Products.');
+            throw new Error('initialBasePrice is a required value for PackingJobs.');
         }
         if (isNaN(v) === true) {
             throw new Error('initialBasePrice must be a numeric value.');
         }
         this._initialBasePrice = v;
     };
-    Product.prototype.setNumOfPeople = function (n) {
+    PackingJob.prototype.setNumOfPeople = function (n) {
         if (typeof n === "undefined") {
-            throw new Error('numOfPeople is a required value for Products.');
+            throw new Error('numOfPeople is a required value for PackingJobs.');
         }
         if (isNaN(n) === true) {
             throw new Error('numOfPeople must be a numeric value.');
@@ -24,22 +24,22 @@ function Product(options) {
         }
         this._numOfPeople = n;
     };
-    Product.prototype.setMaterial = function (m) {
+    PackingJob.prototype.setMaterial = function (m) {
         if (isNaN(m) === false) {
             throw new Error('material must be a non-numeric value.');
         }
         this._material = m;
     };
-    Product.prototype.initialBasePrice = function () {
+    PackingJob.prototype.initialBasePrice = function () {
         return this._initialBasePrice;
     };
-    Product.prototype.numOfPeople = function () {
+    PackingJob.prototype.numOfPeople = function () {
         return this._numOfPeople;
     };
-    Product.prototype.material = function () {
+    PackingJob.prototype.material = function () {
         return this._material;
     };
-    Product.prototype.initialize = function (options) {
+    PackingJob.prototype.initialize = function (options) {
         if (typeof options === "undefined") {
             throw new Error("Missing required paramater 'options'");
         }
