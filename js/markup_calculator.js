@@ -26,7 +26,7 @@ function MarkupCalculator(p) {
         if (typeof materialRate === "undefined") {
             return 0;
         }
-        return markupConfig.materialRate[m];
+        return materialRate;
     }
     
     // Calculate the final cost to package the goods
