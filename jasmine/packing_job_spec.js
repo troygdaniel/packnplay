@@ -22,7 +22,7 @@ describe("PackingJob.js specs", function () {
         packingJobOptions[3] = {
             initialBasePrice: 12456,
             numOfPeople: [4,5,6],
-            material: ["books","ass"]
+            material: ["books","assistance"]
         };
     });
 
