@@ -1,6 +1,6 @@
 /*jslint nomen: true*/
 
-function Product() {
+function Product(options) {
     "use strict";
 
     Product.prototype.setInitialBasePrice = function (v) {
@@ -53,4 +53,7 @@ function Product() {
         this.setInitialBasePrice(options.initialBasePrice);
         this.setMaterial(options.material);
     };
+
+    // Initialize using options
+    this.initialize(options);
 }
