@@ -19,6 +19,11 @@ describe("PackingJob.js specs", function () {
             numOfPeople: 4,
             material: "books"
         };
+        packingJobOptions[3] = {
+            initialBasePrice: 12456,
+            numOfPeople: [4,5,6],
+            material: ["books","ass"]
+        };
     });
 
     describe("PackingJob#initialize", function () {
@@ -37,6 +42,11 @@ describe("PackingJob.js specs", function () {
                 new PackingJob({initialBasePrice: 1, material: "stuff"});
             }).toThrow(new Error("Missing option required attribute 'numOfPeople'"));
         });
+        it("should reject bad data", function () {
+            expect(function () {
+                new PackingJob(packingJobOptions[3]);
+            }).toThrow(new Error('numOfPeople must be a numeric value.'));
+        });        
     });
     describe("PackingJob#setInitialBasePrice", function () {
 
