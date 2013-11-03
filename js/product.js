@@ -3,16 +3,6 @@
 function Product() {
     "use strict";
 
-    // Configurable markup costs in percentages
-    var markup = {
-        flat: 0.05,
-        peopleFactor: 0.012,
-        material: {
-            food: 0.13,
-            drugs: 0.075,
-            electronics: 0.02
-        }
-    };
     Product.prototype.setInitialBasePrice = function (v) {
         if (typeof v === "undefined") {
             throw new Error('initialBasePrice is a required value for Products.');

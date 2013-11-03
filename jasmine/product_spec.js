@@ -1,5 +1,5 @@
 // Product.js jasmine specs
-describe("PackNPlay Product.js specs", function () {
+describe("Product.js specs", function () {
     var productOptions = [], badProductOptions = {}, invalidProductValues = {};
 
     beforeEach(function () {
