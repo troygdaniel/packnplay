@@ -38,17 +38,17 @@ describe("MarkupCalculator.js specs", function () {
     });
 
     describe("MarkupCalculator#flatMarkupRate", function () {
-        it("should calculate flatMarkupRate for 'food' materials", function () {
+        it("should calculate flat markup rate for 'food' materials", function () {
             var markupCalc = new MarkupCalculator(packingJobs[0]);
             expect(markupCalc.flatMarkupRate()).toEqual(1364.99);
         });
 
-        it("should calculate flatMarkupRate for 'drugs' materials", function () {
+        it("should calculate flat markup rate for 'drugs' materials", function () {
             var markupCalc = new MarkupCalculator(packingJobs[1]);
             expect(markupCalc.flatMarkupRate()).toEqual(5703.6);
         });
 
-        it("should calculate flatMarkupRate for 'books' materials", function () {
+        it("should calculate flat markup rate for 'books' materials", function () {
             var markupCalc = new MarkupCalculator(packingJobs[2]);
             expect(markupCalc.flatMarkupRate()).toEqual(13079.8);
         });

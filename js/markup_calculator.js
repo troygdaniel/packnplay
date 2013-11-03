@@ -1,7 +1,5 @@
 /*jslint nomen: true*/
 
-var MarkupCalculator = MarkupCalculator || {};
-
 function MarkupCalculator(p) {
     "use strict";
 
