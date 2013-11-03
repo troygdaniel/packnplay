@@ -1,5 +1,6 @@
 // MarkupCalculator.js jasmine specs
 describe("MarkupCalculator.js specs", function () {
+    "use strict";
     var productOptions = [], products = [];
 
     beforeEach(function () {

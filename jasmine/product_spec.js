@@ -1,5 +1,6 @@
 // Product.js jasmine specs
 describe("Product.js specs", function () {
+    "use strict";
     var productOptions = [], badProductOptions = {}, invalidProductValues = {};
 
     beforeEach(function () {
@@ -21,19 +22,19 @@ describe("Product.js specs", function () {
     });
 
     describe("Product#initialize", function () {
-        it("should expect options to be initialized.", function () {            
+        it("should expect options to be initialized.", function () {
             expect(function () {
                 new Product();
             }).toThrow(new Error("Missing required paramater 'options'"));
         });
         it("should expect initialBasePrice as a required attribute", function () {
             expect(function () {
-                new Product({numberOfPeople: 1, material:"stuff"});
+                new Product({numberOfPeople: 1, material: "stuff"});
             }).toThrow(new Error("Missing option required attribute 'initialBasePrice'"));
         });
         it("should expect numOfPeople as a required attribute", function () {
             expect(function () {
-                new Product({initialBasePrice: 1, material:"stuff"});
+                new Product({initialBasePrice: 1, material: "stuff"});
             }).toThrow(new Error("Missing option required attribute 'numOfPeople'"));
         });
     });
@@ -76,7 +77,7 @@ describe("Product.js specs", function () {
 
     describe("Product#setMaterial", function () {
         it("should not accept non-numeric values.", function () {
-            var p = new Product({initialBasePrice: 1,numOfPeople: 3,material: "d"});
+            var p = new Product({initialBasePrice: 1, numOfPeople: 3, material: "d"});
             expect(function () {
                 p.setMaterial(1);
             }).toThrow(new Error('material must be a non-numeric value.'));
@@ -85,21 +86,21 @@ describe("Product.js specs", function () {
 
     describe("Product#initialBasePrice", function () {
         it("should return its initial base price.", function () {
-            var p = new Product({initialBasePrice: 123,numOfPeople: 3,material: "d"});
+            var p = new Product({initialBasePrice: 123, numOfPeople: 3, material: "d"});
             expect(p.initialBasePrice()).toEqual(123);
         });
     });
 
     describe("Product#numOfPeople", function () {
         it("should return the number of people.", function () {
-            var p = new Product({initialBasePrice: 1,numOfPeople: 3,material: "d"});
+            var p = new Product({initialBasePrice: 1, numOfPeople: 3, material: "d"});
             expect(p.numOfPeople()).toEqual(3);
         });
     });
 
     describe("Product#material", function () {
         it("should return the material type of the product.", function () {
-            var p = new Product({initialBasePrice: 1,numOfPeople: 3,material: "d"});
+            var p = new Product({initialBasePrice: 1, numOfPeople: 3, material: "d"});
             expect(p.material()).toEqual("d");
         });
     });
