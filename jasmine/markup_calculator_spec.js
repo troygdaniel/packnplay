@@ -19,6 +19,11 @@ describe("MarkupCalculator.js specs", function () {
             numOfPeople: 4,
             material: "books"
         });
+        packingJobs[3] = new PackingJob({
+            initialBasePrice: 12456.95,
+            numOfPeople: 4,
+            material: ["books","sds"]
+        });
     });
     describe("MarkupCalculator#finalCost", function () {
         it("should calculate correctly for 'food' materials", function () {
@@ -80,6 +85,10 @@ describe("MarkupCalculator.js specs", function () {
         });
         it("should calculate the correct cost for 'books' materials", function () {
             var markupCalc = new MarkupCalculator(packingJobs[2]);
+            expect(markupCalc.costForMaterials()).toEqual(0);
+        });
+        it("should ignore bad data for materials", function () {
+            var markupCalc = new MarkupCalculator(packingJobs[3]);
             expect(markupCalc.costForMaterials()).toEqual(0);
         });
     });
