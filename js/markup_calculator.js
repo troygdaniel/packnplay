@@ -31,25 +31,25 @@ function MarkupCalculator(p) {
     
     // Calculate the final cost to package the goods
     MarkupCalculator.prototype.finalCost = function () {
-        var finalCost = this.flatMarkupRate() + this.costForPeople() + this.costForMaterials();
+        var finalCost = this.flatMarkup() + this.costForPeople() + this.costForMaterials();
         return parseFloat(finalCost.toFixed(2));
     };
 
     // Calculate the minimum flat markup rate
-    MarkupCalculator.prototype.flatMarkupRate = function () {
-        this._flatMarkupRate = this.product.initialBasePrice() * (1 + markupConfig.flatRate);
-        return parseFloat(this._flatMarkupRate.toFixed(2));
+    MarkupCalculator.prototype.flatMarkup = function () {
+        this._flatMarkup = this.product.initialBasePrice() * (1 + markupConfig.flatRate);
+        return parseFloat(this._flatMarkup.toFixed(2));
     };
 
     // Calculate the line item cost for 'people'
     MarkupCalculator.prototype.costForPeople = function () {
-        var costForPeople = this.flatMarkupRate() * markupForPeople(this.product.numOfPeople());
+        var costForPeople = this.flatMarkup() * markupForPeople(this.product.numOfPeople());
         return parseFloat(costForPeople.toFixed(2));
     };
 
     // Calculate the line item cost for 'materials'
     MarkupCalculator.prototype.costForMaterials = function () {
-        var costForMaterials = this.flatMarkupRate() * markupForMaterial(this.product.material());
+        var costForMaterials = this.flatMarkup() * markupForMaterial(this.product.material());
         return parseFloat(costForMaterials.toFixed(2));
     };
 }
